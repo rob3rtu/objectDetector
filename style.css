@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.detect {
+    border: 3px solid rgb(0, 214, 0);
+}
+
+h2 {
+    letter-spacing: 1px;
+}
+
+
+body {
+    height: 100vh;
+}
