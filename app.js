@@ -4,7 +4,7 @@ let detector;
 let detections = [];
 
 if (navigator.mediaDevices.getUserMedia) {
-    navigator.mediaDevices.getUserMedia({ video: true })
+    navigator.mediaDevices.getUserMedia({ video: true, facingMode: "environment" })
       .then(function (stream) {
         video.srcObject = stream;
          detector = ml5.objectDetector('cocossd', modelReady);
@@ -75,23 +75,3 @@ function gotDetections(error, results) {
          detector.detect(video, gotDetections);
     }
 }
-
-let defaultsOpts = { audio: false, video: true }
-let shouldFaceUser = true;
-
-let stream = null;
-
-function capture() {
-  defaultsOpts.video = { facingMode: 'environment' }
-  navigator.mediaDevices.getUserMedia(defaultsOpts)
-    .then(function(_stream) {
-      stream  = _stream;
-      video.srcObject = stream;
-      video.play();
-    })
-    .catch(function(err) {
-      console.log(err)
-    });
-}
-
-capture();
