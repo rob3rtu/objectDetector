@@ -4,7 +4,12 @@ let detector;
 let detections = [];
 
 if (navigator.mediaDevices.getUserMedia) {
-    navigator.mediaDevices.getUserMedia({ video: true, facingMode: "environment" })
+    navigator.mediaDevices.getUserMedia({
+        audio: false,
+        video: {
+          facingMode: 'environment'
+        }
+      })
       .then(function (stream) {
         video.srcObject = stream;
          detector = ml5.objectDetector('cocossd', modelReady);
